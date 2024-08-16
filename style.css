@@ -1,0 +1,54 @@
+.hearder{
+    background-color:white;
+    color:black;
+}
+
+form{
+    margin:10px;
+}
+
+.mytitle {
+    font-weight: bold;
+    font-size:1.75em;
+    display:block;
+    padding:15px;
+    font-family:Bahnschrift;
+    
+    margin-bottom:10px;
+}
+
+.search_input {
+    display:inline-block;
+    width:300px;
+    height:30px;
+    font-size:15px;
+    border:solid;
+    border-width:thin;
+}
+
+.filter{
+    margin-left:720px;
+    width:175px;
+    height:20px;
+}
+
+section {
+    background-color: lightgray;
+    padding-top:10px;
+    margin:0;
+    width:100%;
+}
+.section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 12px;
+    padding-top: 20px;
+    
+}
+
+.project img {
+    width: 50%;
+    height: 50%;
+    border: outset;
+    padding: 15px
+}
