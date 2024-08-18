@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>Rest Countries</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
     <header class="header">
         <div class="mytitle">Where in the world?</div>
     </header>
 
-    
 
-    <section >
+
+    <section>
         <form>
             <input class="search_input" type="search" placeholder="Search for a country" name="Search" />
             <!--ToDo=> add filter here-->
             <!--<input type="text" placeholder="Filter by Region"/>-->
-            <input class="filter" type="text" id="filterInput" placeholder="Filter by Region">
+            <label for="regions">Select a region:</label>
+            <select id="regions" name="regions">
+                <option value="">Select a region...</option>
+                <option value="Africa">Africa</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Americas">America</option>
+                <option value="Oceania">Oceania</option>
+            </select>
         </form>
         <section class="section">
         </section>
     </section>
 
 
-   
 
 
 
-    <script  src="main.js"></script>
+
+    <script src="main.js"></script>
 </body>
+
 </html>

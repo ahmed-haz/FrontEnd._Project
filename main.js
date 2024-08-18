@@ -1,13 +1,6 @@
 let response, data;
-let divs = [];
-let region = document.getElementsByClassName("filter")[0].value;
+
 const section = document.getElementsByClassName("section")[0];
-let request = {
-    method: 'GET',
-    headers: {
-        'Region': region
-    }
-};
 
 function createImg(s, data) {
     let img = document.createElement("img");
@@ -40,22 +33,40 @@ function createGrid(s, data) {
 }
 
 function parse(data) {
-    for (let i = 0; i < data.length; i++) {
+    section.innerHTML = ""; 
+    const region = document.getElementById('regions').value;
+
+    const filteredData = data.filter(country => {
+        return region === "" || country.region === region;
+    });
+
+    for (let i = 0; i < filteredData.length; i++) {
         let s = document.createElement("div");
         s.setAttribute("class", "project");
-        createGrid(s, data[i]);
-        divs.push(s);
+        createGrid(s, filteredData[i]);
         section.appendChild(s);
     }
 }
 
-async function get() {
-    response = await fetch("./data.json", request);
-    data = await response.json();
-    parse(data);
+async function get(request) {
+    try {
+        response = await fetch("./data.json", request);
+        data = await response.json();
+        parse(data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
 }
-get();
 
- 
+document.getElementById('regions').addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    const request = {
+        method: 'GET',
+        headers: {
+            'Region': selectedValue
+        }
+    };
+    get(request);
+});
 
-
+get({ method: 'GET' });
