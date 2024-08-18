@@ -47,5 +47,8 @@ async function get() {
     data = await response.json();
     parse(data);
 }
-
 get();
+
+ 
+
+
