@@ -1,6 +1,13 @@
 let response, data;
 let divs = [];
+let region = document.getElementsByClassName("filter")[0].value;
 const section = document.getElementsByClassName("section")[0];
+let request = {
+    method: 'GET',
+    headers: {
+        'Region': region
+    }
+};
 
 function createImg(s, data) {
     let img = document.createElement("img");
@@ -43,7 +50,7 @@ function parse(data) {
 }
 
 async function get() {
-    response = await fetch("./data.json");
+    response = await fetch("./data.json", request);
     data = await response.json();
     parse(data);
 }
