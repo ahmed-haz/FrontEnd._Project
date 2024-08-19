@@ -70,14 +70,5 @@ document.getElementById('regions').addEventListener('change', (event) => {
 });
 get({ method: 'GET' });
 
-document.getElementsByClassName('search_input').addEventListener(onblur, (event) => {
-   const searchKey = event.target.value;
-    const request = {
-        method: 'GET',
-        headers: {
-            'name': searchKey
-        }
-    };
-   get(request);
-});
+
 
