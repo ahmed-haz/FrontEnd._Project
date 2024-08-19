@@ -33,11 +33,11 @@ function createGrid(s, data) {
 }
 
 function parse(data) {
-    section.innerHTML = ""; 
+    section.innerHTML = "";
     const region = document.getElementById('regions').value;
-
+    const srch = document.getElementById('search').value.toLowerCase();
     const filteredData = data.filter(country => {
-        return region === "" || country.region === region;
+        return (region === "" || country.region === region) && ((country.name.toLowerCase().includes(srch)) || srch === "");
     });
 
     for (let i = 0; i < filteredData.length; i++) {
@@ -48,9 +48,9 @@ function parse(data) {
     }
 }
 
-async function get(request) {
+async function get() {
     try {
-        response = await fetch("./data.json", request);
+        response = await fetch("./data.json");
         data = await response.json();
         parse(data);
     } catch (error) {
@@ -59,14 +59,9 @@ async function get(request) {
 }
 
 document.getElementById('regions').addEventListener('change', (event) => {
-    const selectedValue = event.target.value;
-    const request = {
-        method: 'GET',
-        headers: {
-            'Region': selectedValue
-        }
-    };
-    get(request);
+    parse(data);
 });
-
-get({ method: 'GET' });
+document.getElementById('search').addEventListener('input', (event) => {
+    parse(data);
+});
+get();
