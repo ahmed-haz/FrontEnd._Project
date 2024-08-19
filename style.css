@@ -22,8 +22,10 @@ body{
 /* ==================form styling================ */
 form{
     margin:10px;
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
     
 }
 
@@ -34,11 +36,15 @@ form{
     border:solid thick white;
     margin-left:35px ;
     color: hsl(0, 0%, 52%);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
 }
 
+
 .filter{
-    display: inline;
-    margin-left: 400px;
+    display: flex;
+    align-items: center;
 }
 
 #regions{
@@ -47,6 +53,8 @@ form{
     width:140px;
     height:40px;
     border:solid thick white;
+    border-radius: 5px;
+
 }
 /* ================================================= */
 
@@ -62,16 +70,13 @@ section {
 .section {
     display: grid; 
     grid-template-columns: 25% 25% 25% 25%;
-    /* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); */
     gap: 6px;
     padding-top: 10px;
-    /* margin:40px; */
     
 }
 /* ====================elements styling=================== */
 .project{
     background-color: white;
-    /* text-align: center; */
     height:330px; 
     padding: 0;
     margin:0 40px 10px 40px;
