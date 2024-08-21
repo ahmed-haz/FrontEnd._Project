@@ -27,9 +27,48 @@ function createText(s, data) {
     s.appendChild(capital);
 }
 
+function addToNewTab(countryData) {
+    let content = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${countryData.name}</title>
+    </head>
+    <body>
+        <h1>${countryData.name}</h1>
+        <img src="${countryData.flags.png}" alt="${countryData.name}" />
+        <p><strong>Population:</strong> ${countryData.population}</p>
+        <p><strong>Region:</strong> ${countryData.region}</p>
+        <p><strong>Capital:</strong> ${countryData.capital}</p>
+    `;
+    if (countryData.independent) {
+        content += `<h2>Borders:</h2>`
+        const filteredData = data.filter(country => {
+            return countryData.borders.includes(country.alpha3Code);
+        });
+
+
+        for (let i = 0; i < filteredData.length; i++) {
+            content += `<p>${filteredData[i].name}</p>`;
+        }
+    }
+
+    content += `</body>
+    </html>`;
+
+    const newTab = window.open();
+    newTab.document.write(content);
+    newTab.document.close();
+}
+
 function createGrid(s, data) {
     createImg(s, data);
     createText(s, data);
+    s.addEventListener("click", () => {
+        addToNewTab(data);
+    });
 }
 
 function parse(data) {
@@ -37,12 +76,13 @@ function parse(data) {
     const region = document.getElementById('regions').value;
     const srch = document.getElementById('search').value.toLowerCase();
     const filteredData = data.filter(country => {
-        return (region === "" || country.region === region) && ((country.name.toLowerCase().includes(srch)) || srch === "");
+        return (region === "" || country.region === region) &&
+            (country.name.toLowerCase().includes(srch) || srch === "");
     });
 
     for (let i = 0; i < filteredData.length; i++) {
         let s = document.createElement("div");
-        s.setAttribute("class", "project");
+        s.setAttribute("class", "country");
         createGrid(s, filteredData[i]);
         section.appendChild(s);
     }
@@ -61,7 +101,9 @@ async function get() {
 document.getElementById('regions').addEventListener('change', (event) => {
     parse(data);
 });
+
 document.getElementById('search').addEventListener('input', (event) => {
     parse(data);
 });
+
 get();
