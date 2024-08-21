@@ -127,17 +127,23 @@ section {
     border-top-right-radius: 8px;
 }
 
-
+/* ======================================================== */
+/* ======================================================== */
 /* ====================new tab styling===================== */
+/* ====================body styling======================== */
 .newtabbody{
     background-color: whitesmoke;
 }
+
+/* ====================header styling======================== */
 
 .newheader{
     background-color:white;
     color:black;
     width: 100%;
 }
+
+/* ====================back button styling======================== */
 
 .Backbtn{
     margin:100px 100px 10px;
@@ -158,6 +164,9 @@ section {
     border:gray thin; 
 }
 
+
+/* ====================main section styling======================== */
+
 .content{
     margin-top: 0;
     display: flex;
@@ -177,6 +186,7 @@ section {
 
 
 
+/* ====================country name styling======================== */
 
 .content div h1{
     font-size: 1.8em;
@@ -184,12 +194,14 @@ section {
     text-transform: uppercase;
 }
 
+
 .content div .data{
     padding: 1.5px;
     margin: 0;
     font-size: 1.1em;
 }
 
+/* ====================border countries styling======================== */
 .content .borders p{
     display: inline;
     box-sizing: content-box;
