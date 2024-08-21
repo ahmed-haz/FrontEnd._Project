@@ -35,16 +35,34 @@ function addToNewTab(countryData) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${countryData.name}</title>
+        <link rel="stylesheet" href="./style.css" />
     </head>
-    <body>
-        <h1>${countryData.name}</h1>
-        <img src="${countryData.flags.png}" alt="${countryData.name}" />
-        <p><strong>Population:</strong> ${countryData.population}</p>
-        <p><strong>Region:</strong> ${countryData.region}</p>
-        <p><strong>Capital:</strong> ${countryData.capital}</p>
+    <body class="newtabbody">
+
+        <header class="newheader">
+            <div class="mytitle">Where in the world?</div>
+        </header>
+
+        <a class="Backbtn" href="http://127.0.0.1:5500/index.html" title="Back to homepage" target="_top">&larr; Back</a>
+        
+        <section class="content">
+            <div class="media">
+                <img class="image" src="${countryData.flags.png}" alt="${countryData.name}" />
+            </div>
+            <div class="info">
+                <h1>${countryData.name}</h1>
+                <p class="data"><strong>Population:</strong> ${countryData.population}</p>
+                <p class="data"><strong>Region:</strong> ${countryData.region}</p>
+                <p class="data"><strong>Capital:</strong> ${countryData.capital}</p>
     `;
     if (countryData.independent) {
-        content += `<h2>Borders:</h2>`
+        content += `
+        <div class="borders">
+            <div>
+                <h2 class="bordertitle">Borders:</h2>
+            </div>
+                    <div class="bordercountries">
+        `
         const filteredData = data.filter(country => {
             return countryData.borders.includes(country.alpha3Code);
         });
@@ -55,8 +73,13 @@ function addToNewTab(countryData) {
         }
     }
 
-    content += `</body>
-    </html>`;
+    content += `
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>`;
 
     const newTab = window.open();
     newTab.document.write(content);
