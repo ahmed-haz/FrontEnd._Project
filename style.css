@@ -1,16 +1,24 @@
 /* ===========general styling for the main  page============ */
 body{
     width:100%;
-    margin-left: 0%;
+    margin: 0%;
     color: hsl(200, 15%, 8%);
     background-color:  hsl(0, 0%, 98%);
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
 }
 /* ===============header styling================ */
-.hearder{
+.header{
+    position: fixed;
+    z-index: 999;
     background-color:white;
     color:black;
+    width: 100%;
+   
 }
 .mytitle {
+    
     font-weight: bold;
     font-size:1.75em;
     display:block;
@@ -19,14 +27,16 @@ body{
     margin-bottom:10px;
 }
 
+
 /* ==================form styling================ */
 form{
-    margin:10px;
+    margin:70px 10px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    
+    padding: 20px;  
+    color: hsl(0, 0%, 52%);
+
 }
 
 .search_input {
@@ -35,21 +45,28 @@ form{
     font-size:15px;
     border:solid thick white;
     margin-left:35px ;
-    color: hsl(0, 0%, 52%);
     display: flex;
     align-items: center;
     border-radius: 5px;
 }
 
+.search_input:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    border:gray thin; 
+}
 
 .filter{
     display: flex;
     align-items: center;
 }
 
+#regions:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    border:gray thin; 
+}
+
 #regions{
     background-color: white;
-    color: hsl(0, 0%, 52%);
     width:140px;
     height:40px;
     border:solid thick white;
@@ -83,6 +100,11 @@ section {
     border-radius: 8px;
 
 }
+
+.project:hover{
+    background-color: lightgray;
+}
+
 .project h3{
     text-indent: 15px;
     font-weight: bolder;
