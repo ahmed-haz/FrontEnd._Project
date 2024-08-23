@@ -2,29 +2,14 @@ let response, data;
 
 const section = document.getElementsByClassName("section")[0];
 
-function createImg(s, data) {
-    let img = document.createElement("img");
-    img.setAttribute("src", data.flags.png);
-    img.setAttribute("alt", data.name);
-    s.appendChild(img);
-}
-
-function createText(s, data) {
-    let txt = document.createElement("h3");
-    txt.innerText = data.name;
-    s.appendChild(txt);
-
-    let population = document.createElement("p");
-    population.innerText = `Population: ${data.population}`;
-    s.appendChild(population);
-
-    let region = document.createElement("p");
-    region.innerText = `Region: ${data.region}`;
-    s.appendChild(region);
-
-    let capital = document.createElement("p");
-    capital.innerText = `Capital: ${data.capital}`;
-    s.appendChild(capital);
+function printList(array) {
+    let content = ``;
+    for (let i = 0; i < array.length; i++) {
+        content += array[i].name;
+        if (i + 1 < array.length)
+            content += ",";
+    }
+    return content;
 }
 
 function addToNewTab(countryData) {
@@ -51,40 +36,74 @@ function addToNewTab(countryData) {
             </div>
             <div class="info">
                 <h1>${countryData.name}</h1>
+                <p class="data"><strong>Native Name:</strong> ${countryData.nativeName}</p>
                 <p class="data"><strong>Population:</strong> ${countryData.population}</p>
                 <p class="data"><strong>Region:</strong> ${countryData.region}</p>
+                 <p class="data"><strong>Sub Region:</strong> ${countryData.subregion}</p>
                 <p class="data"><strong>Capital:</strong> ${countryData.capital}</p>
-    `;
-    if (countryData.independent) {
-        content += `
+                <p class="data"><strong>Top Level Domain:</strong> ${countryData.topLevelDomain}</p>
+                <p class="data"><strong>Currencies:</strong>${printList(countryData.currencies)} </p>
+                <p class="data"><strong>Languages:</strong>${ printList(countryData.languages)}</p>
+                ${('borders' in countryData)? `
         <div class="borders">
             <div>
                 <h2 class="bordertitle">Borders:</h2>
             </div>
                     <div class="bordercountries">
-        `
-        const filteredData = data.filter(country => {
-            return countryData.borders.includes(country.alpha3Code);
-        });
-
-
-        for (let i = 0; i < filteredData.length; i++) {
-            content += `<p>${filteredData[i].name}</p>`;
-        }
-    }
-
-    content += `
-                    </div>
+        `:""}
+           </div>
                 </div>
             </div>
         </section>
     </body>
-</html>`;
+</html> `;
 
     const newTab = window.open();
     newTab.document.write(content);
     newTab.document.close();
+
+    if ('borders' in countryData) {
+        const filteredData = data.filter(country => {
+            return countryData.borders.includes(country.alpha3Code);
+        });
+
+        const countries = newTab.document.getElementsByClassName("bordercountries")[0];
+        for (let i = 0; i < filteredData.length; i++) {
+            let p = newTab.document.createElement('p');
+            p.innerText = filteredData[i].name;
+            countries.appendChild(p);
+            p.addEventListener("click", () => {
+                addToNewTab(filteredData[i]);
+            });
+        }
+    }
 }
+
+function createImg(s, data) {
+    let img = document.createElement("img");
+    img.setAttribute("src", data.flags.png);
+    img.setAttribute("alt", data.name);
+    s.appendChild(img);
+}
+
+function createText(s, data) {
+    let txt = document.createElement("h3");
+    txt.innerText = data.name;
+    s.appendChild(txt);
+
+    let population = document.createElement("p");
+    population.innerText = `Population: ${data.population}`;
+    s.appendChild(population);
+
+    let region = document.createElement("p");
+    region.innerText = `Region: ${data.region}`;
+    s.appendChild(region);
+
+    let capital = document.createElement("p");
+    capital.innerText = `Capital: ${data.capital}`;
+    s.appendChild(capital);
+}
+
 
 function createGrid(s, data) {
     createImg(s, data);
