@@ -11,7 +11,13 @@ function printList(array) {
     }
     return content;
 }
-
+function togglemode(element) {
+    let txt;
+    if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
+    else {isDarkMode=true; txt="&#x263C;Light mode"}
+    element.classList.toggle("darkmode");
+     element.querySelector(".toggleBtn").innerHTML=txt;
+  }
 function addToNewTab(countryData) {
     let content = `
     <!DOCTYPE html>
@@ -85,16 +91,14 @@ function addToNewTab(countryData) {
         }
     }
 
-    if(isDarkMode) {isDarkMode=false;togglemode()};
-    function togglemode() {
-        var element = newTab.document.body;
-        if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
-        else {isDarkMode=true; txt="&#x263C;Light mode"}
-        element.classList.toggle("darkmode");
-        newTab.document.querySelector(".toggleBtn").innerHTML=txt;
-    };
-    newTab.document.querySelector(".toggleBtn").addEventListener("click",togglemode);
+    if(isDarkMode) {isDarkMode=false;togglemode(newTab.document.body)};
+    newTab.document.querySelector(".toggleBtn").addEventListener("click",()=>{togglemode(newTab.document.body)});
+    newTab.document.querySelector(".Backbtn").addEventListener("click",()=> {
+            isDarkMode=false;
+        }
+    );
 }
+
 
 function createImg(s, data) {
     let img = document.createElement("img");
@@ -167,12 +171,5 @@ document.getElementById('search').addEventListener('input', (event) => {
 
 get();
 
-function togglemode() {
-    var element = document.body;
-    let txt;
-    if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
-    else {isDarkMode=true; txt="&#x263C;Light mode"}
-    element.classList.toggle("darkmode");
-     document.querySelector(".toggleBtn").innerHTML=txt;
-  }
-document.querySelector(".toggleBtn").addEventListener("click",togglemode);
+
+document.querySelector(".toggleBtn").addEventListener("click",()=>{togglemode(document.body)});
