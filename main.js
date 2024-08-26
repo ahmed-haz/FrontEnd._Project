@@ -26,6 +26,7 @@ function addToNewTab(countryData) {
 
         <header class="newheader">
             <div class="mytitle">Where in the world?</div>
+            <button class="toggleBtn" type="button">&#x263D;toggle mode</button>
         </header>
 
         <a class="Backbtn" href="http://127.0.0.1:5500/index.html" title="Back to homepage" target="_top">&larr; Back</a>
@@ -36,14 +37,20 @@ function addToNewTab(countryData) {
             </div>
             <div class="info">
                 <h1>${countryData.name}</h1>
+                <div class="flexData">
+            <div class="liftData">
                 <p class="data"><strong>Native Name:</strong> ${countryData.nativeName}</p>
                 <p class="data"><strong>Population:</strong> ${countryData.population}</p>
                 <p class="data"><strong>Region:</strong> ${countryData.region}</p>
-                 <p class="data"><strong>Sub Region:</strong> ${countryData.subregion}</p>
+                <p class="data"><strong>Sub Region:</strong> ${countryData.subregion}</p>
                 <p class="data"><strong>Capital:</strong> ${countryData.capital}</p>
+                </div>
+                <div class="rightData">
                 <p class="data"><strong>Top Level Domain:</strong> ${countryData.topLevelDomain}</p>
                 <p class="data"><strong>Currencies:</strong>${printList(countryData.currencies)} </p>
                 <p class="data"><strong>Languages:</strong>${ printList(countryData.languages)}</p>
+                </div>
+                </div>
                 ${('borders' in countryData)? `
         <div class="borders">
             <div>
@@ -77,6 +84,13 @@ function addToNewTab(countryData) {
             });
         }
     }
+
+    
+    function togglemode() {
+        var element = newTab.document.body;
+        element.classList.toggle("darkmode");
+    };
+    let toggle=newTab.document.querySelector(".toggleBtn").addEventListener("click",togglemode);
 }
 
 function createImg(s, data) {
@@ -149,3 +163,9 @@ document.getElementById('search').addEventListener('input', (event) => {
 });
 
 get();
+
+function togglemode() {
+    var element = document.body;
+    element.classList.toggle("darkmode");
+  }
+let toggle=document.querySelector(".toggleBtn").addEventListener("click",togglemode);

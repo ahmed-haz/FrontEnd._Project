@@ -9,13 +9,18 @@ body {
 
 }
 
-/* ===============header styling================ */
-.header {
+
+
+/* ==================header styling===================== */
+.header  {
     position: fixed;
     z-index: 999;
     background-color: white;
     color: black;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -27,7 +32,22 @@ body {
     padding: 15px;
     font-family: Bahnschrift;
     margin-bottom: 10px;
+    
 }
+
+.toggleBtn{
+    margin-right: 30px;
+    border-radius: 20px;
+    background-color: white;
+    border:none;
+    font-size: 1.3em;
+    transition: 0.7s ease;
+}
+.toggleBtn:hover{
+    background-color: lightgray;
+    transform: scale(1.1);
+}
+
 
 
 /* ==================form styling================ */
@@ -37,11 +57,10 @@ form {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    color: hsl(0, 0%, 52%);
-
 }
 
 .search_input {
+    background-color:white;
     width: 350px;
     height: 40px;
     font-size: 15px;
@@ -51,6 +70,7 @@ form {
     align-items: center;
     border-radius: 5px;
     transition: 0.7s ease;
+    color: black;
 }
 
 .search_input:hover {
@@ -125,7 +145,6 @@ section {
 .country p {
     text-indent: 15px;
     margin: 0;
-    ;
 }
 
 .country img {
@@ -149,12 +168,16 @@ section {
     background-color: white;
     color: black;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ====================back button styling======================== */
 
 .Backbtn {
-    margin: 100px 100px 10px;
+    display: inline-block;
+    margin: 30px 100px ;
     font-size: 30px;
     font-weight: 300;
     margin-bottom: 20px;
@@ -169,8 +192,9 @@ section {
 }
 
 .Backbtn:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border: gray thin;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    background-color: lightgray;
+    transform: scale(1.1);
     cursor: pointer
 }
 
@@ -179,8 +203,10 @@ section {
 
 .content {
     margin-top: 0;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns:auto auto;
+    
+    align-items: flex-start;
     box-sizing: content-box;
     width: 100%;
     height: 100%;
@@ -204,8 +230,21 @@ section {
     text-transform: uppercase;
 }
 
+.content .info{
+    display: block;
+}
 
-.content div .data {
+.content .flexData{
+    display:flex;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    /* flex-direction: row; */
+    /* display: grid;
+    grid-template-columns: auto auto; */
+
+}
+
+.content div .data{
     padding: 1.5px;
     margin: 0;
     font-size: 1.1em;
@@ -213,7 +252,7 @@ section {
 
 /* ====================border countries styling======================== */
 .content .borders p {
-    display: inline;
+    display: inline-block;
     box-sizing: content-box;
     padding: 2px;
     margin-left: 8px;
@@ -221,12 +260,173 @@ section {
     border: solid lightgray thin;
     border-radius: 3px;
     margin-bottom: 0;
+    margin-right: 4px;
     font-size: 1.2em;
     transition: 0.7s ease;
 }
 
 .content .borders p:hover {
     background-color: lightgray;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+
+
+/* ====================media queries==================*/
+
+@media (min-width:0){
+    .section{
+    display: grid;
+    grid-template-columns:100%;
+    
+    }
+
+    
+    .content{
+        display: grid;
+        grid-template-columns:auto;
+        box-sizing: content-box;
+    }
+    .content .info{
+        margin:0 20px 5px 110px;
+        text-overflow: ellipsis;           
+    }
+}
+
+@media (min-width:768px){
+    .section{
+        display: grid;
+        grid-template-columns:50% 50%;
+       
+        }
+
+        .content{
+            display: grid;
+            grid-template-columns:auto;
+            box-sizing: content-box;
+        }
+        .content .info{
+            margin:0 20px 5px 110px;
+            text-overflow: ellipsis;           
+        }
+}
+
+@media (min-width:1000px)and (max-width:1199px){
+    .section{
+        display: grid;
+        grid-template-columns:30% 30% 30% ;
+        
+        }
+        .content{
+            display: grid;
+            grid-template-columns:auto;
+            box-sizing: content-box;
+        }
+        .content .info{
+            margin:0 20px 5px 110px;
+            text-overflow: ellipsis;           
+        }
+}
+
+
+ @media (min-width:1200px){
+.section{
+    display: grid;
+    grid-template-columns:25% 25% 25% 25%;
+}
+
+.content{
+    display: grid;
+    grid-template-columns:auto auto;
+    box-sizing: content-box;
+}
+.content .info{
+    margin:0 20px 5px;
+    text-overflow: ellipsis;           
+}
+}
+
+
+
+
+ /* ================darkmode=============== */
+
+
+ .darkmode{
+    background-color: hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%);
+ }
+
+
+ .darkmode .header{
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+ }
+ /* .darkmode .header .mytitle{
+    color: hsl(0, 0%, 100%);
+ } */
+ .darkmode .header .toggleBtn{
+    color: hsl(0, 0%, 100%);
+ }
+ .darkmode .header .toggleBtn:hover{
+    background-color: hsl(207, 26%, 17%);
+ }
+ .darkmode section{
+    background-color: hsl(207, 26%, 17%);
+ }
+ 
+ .darkmode .toggleBtn{
+    background-color: hsl(209, 23%, 22%);
+ }
+ .darkmode .search_input{
+    background-color: hsl(209, 23%, 22%);
+    color:white;
+    border: solid thick hsl(209, 23%, 22%);
+ }
+
+ .darkmode .search_input:hover{
+    box-shadow: 0 2px 4px rgba(2, 19, 56, 0.2);
+    border: rgb(2, 13, 44) thin;
+ }
+ .darkmode #regions{
+    background-color: hsl(209, 23%, 22%);  
+    color:white;
+    border: solid thick hsl(209, 23%, 22%);
+ }
+
+ .darkmode #regions:hover {
+    box-shadow: 0 2px 4px rgba(2, 19, 56, 0.2);
+    border: rgb(2, 13, 44) thin;
+}
+
+.darkmode .country{
+    background-color: hsl(209, 23%, 22%);
+}
+/* ==================================== */
+
+.darkmode .newheader{
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+}
+.darkmode .newheader .toggleBtn{
+    color: hsl(0, 0%, 100%);
+ }
+
+.darkmode .Backbtn{
+    background-color:hsl(209, 23%, 22%) ;
+    color: white;
+}
+
+.darkmode .content .borders p{
+    background-color:hsl(209, 23%, 22%) ;
+}
+
+
+.darkmode .content .borders p:hover {
+    background-color: hsl(207, 26%, 17%);
     transform: scale(1.1, 1.1);
     cursor: pointer;
 }
+
