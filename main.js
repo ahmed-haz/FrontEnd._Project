@@ -1,7 +1,7 @@
 let response, data;
 
 const section = document.getElementsByClassName("section")[0];
-
+let isDarkMode = false;
 function printList(array) {
     let content = ``;
     for (let i = 0; i < array.length; i++) {
@@ -26,7 +26,7 @@ function addToNewTab(countryData) {
 
         <header class="newheader">
             <div class="mytitle">Where in the world?</div>
-            <button class="toggleBtn" type="button">&#x263D;toggle mode</button>
+            <button class="toggleBtn" type="button">&#x263D;Dark mode</button>
         </header>
 
         <a class="Backbtn" href="http://127.0.0.1:5500/index.html" title="Back to homepage" target="_top">&larr; Back</a>
@@ -85,12 +85,15 @@ function addToNewTab(countryData) {
         }
     }
 
-    
+    if(isDarkMode) {isDarkMode=false;togglemode()};
     function togglemode() {
         var element = newTab.document.body;
+        if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
+        else {isDarkMode=true; txt="&#x263C;Light mode"}
         element.classList.toggle("darkmode");
+        newTab.document.querySelector(".toggleBtn").innerHTML=txt;
     };
-    let toggle=newTab.document.querySelector(".toggleBtn").addEventListener("click",togglemode);
+    newTab.document.querySelector(".toggleBtn").addEventListener("click",togglemode);
 }
 
 function createImg(s, data) {
@@ -166,6 +169,10 @@ get();
 
 function togglemode() {
     var element = document.body;
+    let txt;
+    if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
+    else {isDarkMode=true; txt="&#x263C;Light mode"}
     element.classList.toggle("darkmode");
+     document.querySelector(".toggleBtn").innerHTML=txt;
   }
-let toggle=document.querySelector(".toggleBtn").addEventListener("click",togglemode);
+document.querySelector(".toggleBtn").addEventListener("click",togglemode);
