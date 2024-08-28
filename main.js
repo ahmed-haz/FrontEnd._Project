@@ -1,7 +1,7 @@
 let response, data;
 
 const section = document.getElementsByClassName("section")[0];
-let isDarkMode = false;
+let isDarkMode = localStorage.getItem('isDarkMode') === 'true';
 function printList(array) {
     let content = ``;
     for (let i = 0; i < array.length; i++) {
@@ -12,12 +12,19 @@ function printList(array) {
     return content;
 }
 function togglemode(element) {
+    localStorage.setItem('isDarkMode', `${isDarkMode}`);
     let txt;
-    if(isDarkMode) {isDarkMode=false; txt="&#x263D;Dark mode"}
-    else {isDarkMode=true; txt="&#x263C;Light mode"}
-    element.classList.toggle("darkmode");
-     element.querySelector(".toggleBtn").innerHTML=txt;
-  }
+    if (localStorage.getItem('isDarkMode')===`true`) {
+        txt = "&#x263C;Light mode";
+        element.classList.add("darkmode");
+    }
+    else {   
+        txt = "&#x263D;Dark mode";
+        element.classList.remove("darkmode");
+    }
+    element.querySelector(".toggleBtn").innerHTML = txt;
+}
+
 function addToNewTab(countryData) {
     let content = `
     <!DOCTYPE html>
@@ -35,7 +42,7 @@ function addToNewTab(countryData) {
             <button class="toggleBtn" type="button">&#x263D;Dark mode</button>
         </header>
 
-        <a class="Backbtn" href="http://127.0.0.1:5500/index.html" title="Back to homepage" target="_top">&larr; Back</a>
+        <button class="Backbtn" onclick="window.location.href='/'">&larr; Back</button>
         
         <section class="content">
             <div class="media">
@@ -90,13 +97,12 @@ function addToNewTab(countryData) {
             });
         }
     }
-
-    if(isDarkMode) {isDarkMode=false;togglemode(newTab.document.body)};
-    newTab.document.querySelector(".toggleBtn").addEventListener("click",()=>{togglemode(newTab.document.body)});
-    newTab.document.querySelector(".Backbtn").addEventListener("click",()=> {
-            isDarkMode=false;
-        }
+    togglemode(newTab.document.body);
+    newTab.document.querySelector(".toggleBtn").addEventListener("click",()=>{
+        isDarkMode=!isDarkMode;
+        togglemode(newTab.document.body)}
     );
+  
 }
 
 
@@ -135,6 +141,7 @@ function createGrid(s, data) {
 }
 
 function parse(data) {
+    togglemode(document.body);
     section.innerHTML = "";
     const region = document.getElementById('regions').value;
     const srch = document.getElementById('search').value.toLowerCase();
@@ -172,4 +179,8 @@ document.getElementById('search').addEventListener('input', (event) => {
 get();
 
 
-document.querySelector(".toggleBtn").addEventListener("click",()=>{togglemode(document.body)});
+document.querySelector(".toggleBtn").addEventListener("click",()=>{
+    isDarkMode=!isDarkMode;
+    togglemode(document.body);
+}
+);
