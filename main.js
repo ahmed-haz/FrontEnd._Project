@@ -42,7 +42,7 @@ function addToNewTab(countryData) {
             <button class="toggleBtn" type="button">&#x263D;Dark mode</button>
         </header>
 
-        <button class="Backbtn" onclick="window.location.href='/'">&larr; Back</button>
+        <button class="Backbtn" onclick="window.location.href='/'" title="back to homepage">&larr; Back</button>
         
         <section class="content">
             <div class="media">
