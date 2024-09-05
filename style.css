@@ -286,14 +286,15 @@ section {
     grid-template-columns:100%;
     
     }
-    .header{
-        width: 100%;
-        font-size: small;
-    }
+   
     .mytitle{
+        font-size: 18px;
         text-overflow: ellipsis;
-        overflow: hidden;
+        overflow: unset;
         text-wrap: nowrap;
+    }
+    .toggleBtn{
+        font-size: 14px;
     }
 
     .newheader {
@@ -317,15 +318,12 @@ section {
         grid-template-columns:50% 50%;
        
         }
-
-        .header{
-            width: 100%;
-            font-size: small;
-        }
         .mytitle{
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-wrap: nowrap;
+            font-size: 20px;
+        }
+        
+        .toggleBtn{
+            font-size: 16px;
         }
         .content{
             display: grid;
@@ -344,6 +342,15 @@ section {
         grid-template-columns:30% 30% 30% ;
         
         }
+
+        .mytitle{
+            font-size: 24px;
+        }
+        
+        .toggleBtn{
+            font-size: 17px;
+        }
+
         .content{
             display: grid;
             grid-template-columns:auto;
