@@ -292,8 +292,12 @@ section {
     grid-template-columns:100%;
     
     }
+    .header{
+        width: 100%;
+        font-size: small;
+    }
 
-    .newheader , .header{
+    .newheader {
         width: 100%;
         font-size: small;
     }
