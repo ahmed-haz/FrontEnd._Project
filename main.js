@@ -48,7 +48,7 @@ function addToNewTab(countryData) {
             <div class="media">
                 <img class="image" src="${countryData.flags.png}" alt="${countryData.name}" />
             </div>
-            <div class="info">
+        <div class="info">
                 <h1>${countryData.name}</h1>
                 <div class="flexData">
             <div class="liftData">
@@ -58,12 +58,12 @@ function addToNewTab(countryData) {
                 <p class="data"><strong>Sub Region:</strong> ${countryData.subregion}</p>
                 <p class="data"><strong>Capital:</strong> ${countryData.capital}</p>
                 </div>
-                <div class="rightData">
+            <div class="rightData">
                 <p class="data"><strong>Top Level Domain:</strong> ${countryData.topLevelDomain}</p>
                 <p class="data"><strong>Currencies:</strong>${printList(countryData.currencies)} </p>
                 <p class="data"><strong>Languages:</strong>${ printList(countryData.languages)}</p>
-                </div>
-                </div>
+            </div>
+        </div>
                 ${('borders' in countryData)? `
         <div class="borders">
             <div>
