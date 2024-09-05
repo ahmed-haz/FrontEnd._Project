@@ -281,9 +281,8 @@ section {
 /* ====================media queries==================*/
 
 @media (min-width:0){
-    body{
+    .mainsection{
         box-sizing: content-box;
-
     }
     .section{
     display: grid;
