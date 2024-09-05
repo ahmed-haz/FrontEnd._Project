@@ -160,7 +160,13 @@ section {
 /* ====================new tab styling===================== */
 /* ====================body styling======================== */
 .newtabbody {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+        width: 100%;
+        margin: 0%;
+        color: hsl(200, 15%, 8%);
+        background-color: hsl(0, 0%, 98%);
+        box-sizing: border-box;
+        scroll-behavior: smooth;
 }
 
 /* ====================header styling======================== */
@@ -174,13 +180,14 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 0;
 }
 
 /* ====================back button styling======================== */
 
 .Backbtn {
     display: inline-block;
-    margin: 80px 100px 10px;
+    margin: 80px 100px 10px 0;
     font-size: 30px;
     font-weight: 300;
     margin-bottom: 20px;
@@ -288,7 +295,7 @@ section {
 
     .newheader{
         width: 100%;
-        font-size: auto;
+        font-size: small;
     }
     .content{
         display: grid;
