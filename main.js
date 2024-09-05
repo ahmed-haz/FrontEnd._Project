@@ -51,7 +51,7 @@ function addToNewTab(countryData) {
         <div class="info">
                 <h1>${countryData.name}</h1>
                 <div class="flexData">
-            <div class="liftData">
+            <div class="leftData">
                 <p class="data"><strong>Native Name:</strong> ${countryData.nativeName}</p>
                 <p class="data"><strong>Population:</strong> ${countryData.population}</p>
                 <p class="data"><strong>Region:</strong> ${countryData.region}</p>
