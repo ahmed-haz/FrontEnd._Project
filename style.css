@@ -26,9 +26,8 @@ body {
 }
 
 .mytitle {
-/* 1.75em */
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     display: block;
     padding: 15px;
     font-family: Bahnschrift;
@@ -37,12 +36,11 @@ body {
 }
 
 .toggleBtn{
-    /* 1.3em */
     margin-right: 30px;
     border-radius: 20px;
     background-color: white;
     border:none;
-    font-size: 15px;
+    font-size: 17px;
     transition: 0.7s ease;
 }
 .toggleBtn:hover{
@@ -248,12 +246,7 @@ section {
 
 .content .flexData{
     display:flex;
-    /* justify-content: space-between; */
     align-items: flex-start;
-    /* flex-direction: row; */
-    /* display: grid;
-    grid-template-columns: auto auto; */
-
 }
 
 .content div .data{
@@ -298,6 +291,11 @@ section {
         width: 100%;
         font-size: small;
     }
+    .mytitle{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-wrap: nowrap;
+    }
 
     .newheader {
         width: 100%;
@@ -321,6 +319,10 @@ section {
        
         }
 
+        .header{
+            width: 100%;
+            font-size: small;
+        }
         .content{
             display: grid;
             grid-template-columns:auto;
