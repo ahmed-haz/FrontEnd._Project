@@ -166,6 +166,7 @@ section {
         background-color: hsl(0, 0%, 98%);
         box-sizing: border-box;
         scroll-behavior: smooth;
+        
 }
 
 /* ====================header styling======================== */
@@ -214,7 +215,6 @@ section {
     margin-top: 0;
     display: grid;
     grid-template-columns:auto auto;
-    
     align-items: flex-start;
     box-sizing: content-box;
     width: 100%;
@@ -224,8 +224,9 @@ section {
 .content div img {
     align-items: center;
     margin: 20px 100px 100px;
+    max-width: 100%;
     width: 400px;
-    height: 400px;
+    height: auto;
     border-radius: 6px;
 }
 
