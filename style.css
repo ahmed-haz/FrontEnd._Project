@@ -281,13 +281,10 @@ section {
 /* ====================media queries==================*/
 
 @media (min-width:0){
-    .mainsection{
-        box-sizing: content-box;
-    }
+   
     .section{
     display: grid;
     grid-template-columns:100%;
-    box-sizing: content-box;
     }
    
     .mytitle{
@@ -308,7 +305,7 @@ section {
     }
     .content{
         display: grid;
-        grid-template-columns:auto;
+        grid-template-columns:100%;
         box-sizing: content-box;
     }
     .content .info{
@@ -332,7 +329,7 @@ section {
         }
         .content{
             display: grid;
-            grid-template-columns:auto;
+            grid-template-columns:100%;
             box-sizing: content-box;
         }
         .content .info{
@@ -358,7 +355,7 @@ section {
 
         .content{
             display: grid;
-            grid-template-columns:auto;
+            grid-template-columns:100%;
             box-sizing: content-box;
         }
         .content .info{
@@ -376,7 +373,7 @@ section {
 
 .content{
     display: grid;
-    grid-template-columns:auto auto;
+    grid-template-columns:50% 50%;
     box-sizing: content-box;
 }
 .content .info{
