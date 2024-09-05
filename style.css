@@ -281,6 +281,10 @@ section {
 /* ====================media queries==================*/
 
 @media (min-width:0){
+    body{
+        box-sizing: content-box;
+
+    }
     .section{
     display: grid;
     grid-template-columns:100%;
