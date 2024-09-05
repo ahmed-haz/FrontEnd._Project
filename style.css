@@ -160,7 +160,6 @@ section {
 /* ====================new tab styling===================== */
 /* ====================body styling======================== */
 .newtabbody {
-    /* background-color: whitesmoke; */
         width: 100%;
         margin: 0%;
         color: hsl(200, 15%, 8%);
@@ -322,6 +321,11 @@ section {
         .header{
             width: 100%;
             font-size: small;
+        }
+        .mytitle{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-wrap: nowrap;
         }
         .content{
             display: grid;
